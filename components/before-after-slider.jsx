@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function BeforeAfterSlider({
-  beforeImage = "/images/client/before.jpg",
-  afterImage = "/images/client/after.jpg",
+  beforeImage = `${assetBasePath}/images/client/before.jpg`,
+  afterImage = `${assetBasePath}/images/client/after.jpg`,
   beforeLabel = "Before",
   afterLabel = "After",
   initialPosition = 54,
