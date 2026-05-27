@@ -13,6 +13,7 @@ export default function BeforeAfterSlider({
   initialPosition = 54,
   accentColor = "#e9c99d",
   className = "",
+  ariaLabel = "Compare project transformation",
   title,
   description
 }) {
@@ -66,7 +67,7 @@ export default function BeforeAfterSlider({
 
       <div className="mt-5 px-2">
         <input
-          aria-label="Compare project transformation"
+          aria-label={ariaLabel}
           className="h-2 w-full cursor-ew-resize appearance-none rounded-full bg-white/10"
           max="100"
           min="0"

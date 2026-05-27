@@ -160,6 +160,7 @@ export default function PremiumDivisions() {
             {premiumDivisions.intro.description}
           </p>
           <a
+            aria-label="Contact Harkani.Plc on WhatsApp to choose the right premium division"
             className="luxury-button mt-8 inline-flex items-center gap-2"
             href={whatsappHref}
             rel="noreferrer"
@@ -231,6 +232,7 @@ export default function PremiumDivisions() {
                   ))}
                 </div>
                 <a
+                  aria-label="Contact Harkani.Plc on WhatsApp about the Interiors Division"
                   className="division-copy-line luxury-button mt-8 inline-flex items-center gap-2"
                   href={whatsappHref}
                   rel="noreferrer"
@@ -359,6 +361,7 @@ export default function PremiumDivisions() {
                   ))}
                 </div>
                 <a
+                  aria-label="Contact Harkani.Plc on WhatsApp about the Finishing and Construction Division"
                   className="division-copy-line luxury-button mt-8 inline-flex items-center gap-2"
                   href={whatsappHref}
                   rel="noreferrer"
@@ -385,6 +388,7 @@ export default function PremiumDivisions() {
             <div className="mt-10 grid gap-6 xl:grid-cols-[1.02fr_0.98fr]">
               <div className="division-card">
                 <BeforeAfterSlider
+                  ariaLabel="Compare Finishing and Construction Division before and after project transformation"
                   accentColor="#5a88ff"
                   afterImage={premiumDivisions.construction.comparison.afterImage}
                   afterLabel={premiumDivisions.construction.comparison.afterLabel}
@@ -435,6 +439,7 @@ export default function PremiumDivisions() {
                   ))}
                 </div>
                 <a
+                  aria-label="Contact Harkani.Plc on WhatsApp about the construction execution timeline"
                   className="secondary-button mt-8 inline-flex items-center gap-2"
                   href={whatsappHref}
                   rel="noreferrer"
@@ -502,6 +507,7 @@ export default function PremiumDivisions() {
                   })}
                 </div>
                 <a
+                  aria-label="Contact Harkani.Plc on WhatsApp about the Furniture and Full Setup Division"
                   className="division-copy-line luxury-button mt-8 inline-flex items-center gap-2"
                   href={whatsappHref}
                   rel="noreferrer"
@@ -537,7 +543,7 @@ export default function PremiumDivisions() {
                             </span>
                             <div className="flex items-center gap-2">
                               <button
-                                aria-label="Previous showroom item"
+                                aria-label="Show previous furniture showroom item"
                                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-black/25 text-white/80 backdrop-blur-md transition hover:border-white/25 hover:text-white"
                                 onClick={() =>
                                   setActiveFurnitureIndex(
@@ -551,7 +557,7 @@ export default function PremiumDivisions() {
                                 <ArrowLeft className="h-4 w-4" />
                               </button>
                               <button
-                                aria-label="Next showroom item"
+                                aria-label="Show next furniture showroom item"
                                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-black/25 text-white/80 backdrop-blur-md transition hover:border-white/25 hover:text-white"
                                 onClick={() =>
                                   setActiveFurnitureIndex(
@@ -589,7 +595,7 @@ export default function PremiumDivisions() {
                         <button
                           key={item.id}
                           aria-current={activeFurnitureIndex === index}
-                          aria-label={`Show ${item.title}`}
+                          aria-label={`Show furniture showroom item: ${item.title}`}
                           className={`showroom-thumbnail group relative min-h-[118px] overflow-hidden rounded-[1.35rem] border text-left transition ${
                             activeFurnitureIndex === index
                               ? "border-[#7a5b3d]/45 shadow-[0_20px_55px_rgba(74,53,32,0.24)]"
@@ -622,6 +628,7 @@ export default function PremiumDivisions() {
                     </div>
 
                     <a
+                      aria-label="Contact Harkani.Plc on WhatsApp to request the furniture setup catalog"
                       className="inline-flex w-fit items-center gap-2 rounded-full border border-[#5a4430]/20 bg-[#2a2018] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2a1f]"
                       href={whatsappHref}
                       rel="noreferrer"

@@ -277,6 +277,24 @@ select {
   transform: scaleX(1);
 }
 
+#divisions a:focus-visible,
+#divisions button:focus-visible,
+#divisions input:focus-visible,
+#divisions select:focus-visible,
+#divisions textarea:focus-visible,
+#divisions [tabindex]:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.96),
+    0 0 0 10px rgba(233, 201, 157, 0.7);
+}
+
+#divisions .interactive-surface:focus-visible::before,
+#divisions .showroom-thumbnail:focus-visible span:first-child {
+  opacity: 1;
+}
+
 .interactive-surface {
   position: relative;
   overflow: hidden;
