@@ -8,6 +8,8 @@
   color-scheme: dark;
   --background: #050505;
   --background-soft: #090909;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", serif;
+  --font-sans: "Manrope", "Aptos", "Segoe UI", sans-serif;
   --surface: rgba(20, 20, 20, 0.74);
   --surface-strong: rgba(18, 18, 18, 0.94);
   --line: rgba(255, 255, 255, 0.11);
@@ -36,7 +38,7 @@ body {
     radial-gradient(circle at 85% 20%, rgba(104, 73, 48, 0.18), transparent 24%),
     linear-gradient(180deg, #0d0b09 0%, #060606 30%, #040404 100%);
   color: var(--text);
-  font-family: "Manrope", "Aptos", "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
 }
 
@@ -110,8 +112,13 @@ select {
   width: min(1180px, calc(100% - 1.5rem));
 }
 
+.section-shell > * {
+  min-width: 0;
+}
+
 .section-copy {
   max-width: 42rem;
+  min-width: 0;
 }
 
 .eyebrow {
@@ -134,11 +141,37 @@ select {
 }
 
 .section-title {
-  font-family: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", serif;
+  font-family: var(--font-display);
   font-size: clamp(2.6rem, 6vw, 4.6rem);
   font-weight: 600;
   line-height: 0.94;
   letter-spacing: -0.02em;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.display-title,
+.division-title,
+.brand-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.display-title {
+  font-size: clamp(4rem, 9vw, 7.4rem);
+  line-height: 0.86;
+  overflow-wrap: break-word;
+}
+
+.division-title {
+  font-size: clamp(2.8rem, 5vw, 5.2rem);
+  line-height: 0.92;
+  overflow-wrap: break-word;
+}
+
+.brand-wordmark {
+  letter-spacing: 0.2em;
 }
 
 .glass-panel {

@@ -155,7 +155,7 @@ export default function HomePage() {
           transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
         >
           <div className="text-center">
-            <p className="font-serif text-3xl tracking-[0.32em] text-white">Harkani.Plc</p>
+            <p className="brand-wordmark text-3xl text-white">Harkani.Plc</p>
             <p className="mt-4 text-[0.72rem] font-semibold uppercase tracking-[0.34em] text-white/56">
               Interiors . Construction . Full Setup
             </p>
@@ -196,7 +196,7 @@ export default function HomePage() {
           <div className="flex w-full items-center justify-between lg:w-auto lg:justify-center">
             <div className="w-10 lg:hidden" />
             <a
-              className="absolute left-1/2 -translate-x-1/2 text-center font-serif text-xl tracking-[0.24em] text-white"
+              className="brand-wordmark absolute left-1/2 -translate-x-1/2 text-center text-xl text-white"
               href="#home"
             >
               Harkani.Plc
@@ -272,7 +272,7 @@ export default function HomePage() {
             <div className="grid flex-1 items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_420px]">
               <div className="hero-copy section-copy">
                 <span className="eyebrow">Premium spaces in Ethiopia</span>
-                <h1 className="mt-6 text-balance text-[clamp(3rem,8vw,6rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-white">
+                <h1 className="display-title mt-6 max-w-4xl text-balance text-white">
                   Design. Build. Furnish.
                 </h1>
                 <p className="mt-6 max-w-2xl text-balance text-base leading-8 text-white/75 md:text-lg">
@@ -572,8 +572,10 @@ export default function HomePage() {
                 <Reveal key={item.title} delay={index * 0.04}>
                   <div
                     className={`group relative overflow-hidden rounded-[1.2rem] border border-white/10 bg-cover bg-center ${
-                      index === 0 || index === 5 ? "min-h-[340px] sm:row-span-2" : "min-h-[160px]"
-                    } ${index === 2 ? "lg:col-span-2" : ""}`}
+                      index === 0 || index === 5 || index === 9
+                        ? "min-h-[340px] sm:row-span-2"
+                        : "min-h-[160px]"
+                    } ${index === 2 || index === 7 ? "lg:col-span-2" : ""}`}
                     style={{ backgroundImage: `url(${item.image})` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-80 transition group-hover:opacity-55" />

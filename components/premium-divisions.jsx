@@ -202,7 +202,7 @@ export default function PremiumDivisions() {
                 <span className="division-copy-line eyebrow !text-[#ffd54a] before:!bg-[#ffd54a]">
                   {premiumDivisions.interiors.label}
                 </span>
-                <h3 className="division-copy-line mt-6 text-balance font-serif text-[clamp(2.8rem,5vw,5.2rem)] leading-[0.92] text-white">
+                <h3 className="division-title division-copy-line mt-6 text-balance text-white">
                   {premiumDivisions.interiors.title}
                 </h3>
                 <p className="division-copy-line mt-6 text-base leading-8 text-white/76 md:text-lg">
@@ -332,7 +332,7 @@ export default function PremiumDivisions() {
                 <span className="division-copy-line eyebrow !text-[#7ea5ff] before:!bg-[#7ea5ff]">
                   {premiumDivisions.construction.label}
                 </span>
-                <h3 className="division-copy-line mt-6 text-balance font-serif text-[clamp(2.8rem,5vw,5.2rem)] leading-[0.92] text-white">
+                <h3 className="division-title division-copy-line mt-6 text-balance text-white">
                   {premiumDivisions.construction.title}
                 </h3>
                 <p className="division-copy-line mt-6 text-base leading-8 text-white/74 md:text-lg">
@@ -463,7 +463,7 @@ export default function PremiumDivisions() {
                 <span className="division-copy-line eyebrow !text-[#5f4831] before:!bg-[#8e6a46]">
                   {premiumDivisions.furniture.label}
                 </span>
-                <h3 className="division-copy-line mt-6 text-balance font-serif text-[clamp(2.8rem,5vw,5.2rem)] leading-[0.92] text-[#201a15]">
+                <h3 className="division-title division-copy-line mt-6 text-balance text-[#201a15]">
                   {premiumDivisions.furniture.title}
                 </h3>
                 <p className="division-copy-line mt-6 text-base leading-8 text-[#4f4033] md:text-lg">
