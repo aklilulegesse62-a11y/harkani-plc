@@ -176,7 +176,7 @@ export default function PremiumDivisions() {
             {clientSegments.map((segment) => (
               <motion.div
                 key={segment}
-                className="glass-panel interactive-surface rounded-full px-5 py-3 text-sm font-medium text-white/76"
+                className="glass-panel interactive-surface px-5 py-3 text-sm font-medium uppercase tracking-[0.12em] text-white/72"
                 onMouseMove={updateInteractiveGlow}
                 whileHover={{ y: -3 }}
               >
@@ -200,7 +200,7 @@ export default function PremiumDivisions() {
           <div className="relative z-10 flex min-h-[100svh] flex-col justify-between p-5 md:p-8 xl:p-12">
             <div className="grid gap-8 xl:grid-cols-[0.88fr_1.12fr]">
               <div className="division-copy max-w-xl">
-                <span className="division-copy-line eyebrow !text-[#ffd54a] before:!bg-[#ffd54a]">
+                <span className="division-copy-line eyebrow !text-[#d8c18a] before:!bg-[#d8c18a]">
                   {premiumDivisions.interiors.label}
                 </span>
                 <h3 className="division-title division-copy-line mt-6 text-balance text-white">
@@ -214,7 +214,7 @@ export default function PremiumDivisions() {
                   {premiumDivisions.interiors.audiences.map((audience) => (
                     <span
                       key={audience}
-                      className="rounded-full border border-[#ffd54a]/20 bg-[#ffd54a]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#ffe690]"
+                      className="border border-[#d8c18a]/20 bg-[#d8c18a]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#f1eadc]"
                     >
                       {audience}
                     </span>
@@ -225,7 +225,7 @@ export default function PremiumDivisions() {
                   {premiumDivisions.interiors.highlights.map((highlight) => (
                     <div
                       key={highlight}
-                      className="glass-panel rounded-[1.5rem] border border-white/10 bg-white/[0.03] px-5 py-4 text-sm leading-7 text-white/76"
+                      className="glass-panel border border-white/10 bg-white/[0.03] px-5 py-4 text-sm leading-7 text-white/76"
                     >
                       {highlight}
                     </div>
@@ -245,7 +245,7 @@ export default function PremiumDivisions() {
 
               <div className="grid gap-4">
                 <motion.div
-                  className="division-card group relative min-h-[360px] overflow-hidden rounded-[2rem] border border-white/10"
+                  className="division-card group relative min-h-[360px] overflow-hidden border border-white/10"
                   onMouseMove={updateInteractiveGlow}
                   style={{ "--surface-glow": "rgba(255, 213, 74, 0.24)" }}
                   whileHover={{ y: -4 }}
@@ -260,7 +260,7 @@ export default function PremiumDivisions() {
 
                   <div className="relative flex h-full flex-col justify-between p-5 md:p-6">
                     <div className="flex items-start justify-between gap-4">
-                      <span className="rounded-full border border-[#ffd54a]/28 bg-[#051629]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#ffe37d] backdrop-blur-xl">
+                      <span className="border border-[#d8c18a]/28 bg-black/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#f1eadc] backdrop-blur-xl">
                         Fullscreen showcase
                       </span>
                       <span className="text-xs uppercase tracking-[0.24em] text-white/56">
@@ -280,7 +280,7 @@ export default function PremiumDivisions() {
                   {premiumDivisions.interiors.gallery.map((item) => (
                     <motion.article
                       key={item.title}
-                      className="division-card interactive-surface group relative min-h-[230px] overflow-hidden rounded-[1.8rem] border border-white/10"
+                      className="division-card interactive-surface group relative min-h-[230px] overflow-hidden border border-white/10"
                       onMouseMove={updateInteractiveGlow}
                       style={{ "--surface-glow": "rgba(255, 213, 74, 0.22)" }}
                       whileHover={{ y: -6 }}
@@ -292,7 +292,7 @@ export default function PremiumDivisions() {
                         }}
                       />
                       <div className="relative flex h-full flex-col justify-end p-5">
-                        <span className="mb-3 inline-flex w-fit rounded-full border border-white/10 bg-black/25 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/74 backdrop-blur-md">
+                        <span className="mb-3 inline-flex w-fit border border-white/10 bg-black/25 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/74 backdrop-blur-md">
                           {item.tag}
                         </span>
                         <h4 className="text-xl font-semibold text-white">{item.title}</h4>
@@ -307,9 +307,9 @@ export default function PremiumDivisions() {
               {premiumDivisions.interiors.floatingCards.map((card) => (
                 <div
                   key={card.title}
-                  className="division-card glass-panel rounded-[1.6rem] border border-white/10 bg-white/[0.03] p-5"
+                  className="division-card glass-panel border border-white/10 bg-white/[0.03] p-5"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ffe37d]">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d8c18a]">
                     {card.title}
                   </p>
                   <p className="mt-3 text-sm leading-7 text-white/72">{card.detail}</p>
@@ -331,7 +331,7 @@ export default function PremiumDivisions() {
           <div className="relative z-10 flex min-h-[100svh] flex-col justify-between p-5 md:p-8 xl:p-12">
             <div className="grid gap-8 xl:grid-cols-[0.78fr_1.22fr]">
               <div className="division-copy max-w-xl">
-                <span className="division-copy-line eyebrow !text-[#7ea5ff] before:!bg-[#7ea5ff]">
+                <span className="division-copy-line eyebrow !text-[#d8c18a] before:!bg-[#d8c18a]">
                   {premiumDivisions.construction.label}
                 </span>
                 <h3 className="division-title division-copy-line mt-6 text-balance text-white">
@@ -353,9 +353,9 @@ export default function PremiumDivisions() {
                   ].map((item) => (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-2 rounded-full border border-[#7ea5ff]/20 bg-[#7ea5ff]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#dce6ff]"
+                      className="inline-flex items-center gap-2 border border-[#d8c18a]/20 bg-[#d8c18a]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#f1eadc]"
                     >
-                      <CircleDashed className="h-4 w-4 text-[#7ea5ff]" />
+                      <CircleDashed className="h-4 w-4 text-[#d8c18a]" />
                       {item}
                     </span>
                   ))}
@@ -389,7 +389,7 @@ export default function PremiumDivisions() {
               <div className="division-card">
                 <BeforeAfterSlider
                   ariaLabel="Compare Finishing and Construction Division before and after project transformation"
-                  accentColor="#5a88ff"
+                  accentColor="#d8c18a"
                   afterImage={premiumDivisions.construction.comparison.afterImage}
                   afterLabel={premiumDivisions.construction.comparison.afterLabel}
                   beforeImage={premiumDivisions.construction.comparison.beforeImage}
@@ -403,9 +403,9 @@ export default function PremiumDivisions() {
                   {premiumDivisions.construction.showcases.map((item) => (
                     <div
                       key={item.title}
-                      className="division-card glass-panel rounded-[1.6rem] border border-white/10 bg-white/[0.03] p-5"
+                      className="division-card glass-panel border border-white/10 bg-white/[0.03] p-5"
                     >
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#7ea5ff]">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d8c18a]">
                         Commercial showcase
                       </p>
                       <h4 className="mt-3 text-xl font-semibold text-white">{item.title}</h4>
@@ -415,12 +415,12 @@ export default function PremiumDivisions() {
                 </div>
               </div>
 
-              <div className="construction-timeline division-card glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 md:p-6">
+              <div className="construction-timeline division-card glass-panel relative overflow-hidden border border-white/10 bg-white/[0.03] p-5 md:p-6">
                 <div className="pointer-events-none absolute bottom-6 left-7 top-24 w-px bg-white/10">
-                  <div className="blueprint-progress absolute inset-0 bg-gradient-to-b from-[#7ea5ff] via-[#7ea5ff]/40 to-transparent" />
+                  <div className="blueprint-progress absolute inset-0 bg-gradient-to-b from-[#d8c18a] via-[#d8c18a]/40 to-transparent" />
                 </div>
 
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#7ea5ff]">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d8c18a]">
                   Execution timeline
                 </p>
                 <h4 className="mt-4 max-w-lg text-3xl font-semibold text-white">
@@ -430,7 +430,7 @@ export default function PremiumDivisions() {
                 <div className="mt-8 space-y-5">
                   {premiumDivisions.construction.timeline.map((item) => (
                     <div key={item.stage} className="timeline-step relative pl-10">
-                      <div className="absolute left-0 top-1 flex h-6 w-6 items-center justify-center rounded-full border border-[#7ea5ff]/35 bg-[#7ea5ff]/12 text-[0.65rem] font-semibold text-[#d5e0ff]">
+                      <div className="absolute left-0 top-1 flex h-6 w-6 items-center justify-center border border-[#d8c18a]/35 bg-[#d8c18a]/12 text-[0.65rem] font-semibold text-[#f1eadc]">
                         {item.stage}
                       </div>
                       <h5 className="text-lg font-semibold text-white">{item.title}</h5>
@@ -475,7 +475,7 @@ export default function PremiumDivisions() {
                   {premiumDivisions.furniture.description}
                 </p>
 
-                <div className="division-copy-line mt-8 rounded-[1.8rem] border border-[#5a4430]/10 bg-white/45 p-5 shadow-[0_24px_70px_rgba(74,53,32,0.12)] backdrop-blur-xl">
+                <div className="division-copy-line mt-8 border border-[#5a4430]/10 bg-white/45 p-5 shadow-[0_24px_70px_rgba(74,53,32,0.12)] backdrop-blur-xl">
                   <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#6c5035]">
                     Everything in one place
                   </p>
@@ -491,13 +491,13 @@ export default function PremiumDivisions() {
                     return (
                       <motion.div
                         key={item.title}
-                        className="division-card interactive-surface warm-panel rounded-[1.6rem] p-5"
+                        className="division-card interactive-surface warm-panel p-5"
                         onMouseMove={updateInteractiveGlow}
                         style={{ "--surface-glow": "rgba(120, 83, 47, 0.16)" }}
                         whileHover={{ y: -4 }}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#6c5035]/12 bg-white/60 text-[#5d4630]">
+                          <div className="flex h-11 w-11 items-center justify-center border border-[#6c5035]/12 bg-white/60 text-[#5d4630]">
                             <Icon className="h-4 w-4" />
                           </div>
                           <p className="text-lg font-semibold text-[#201a15]">{item.title}</p>
@@ -518,9 +518,9 @@ export default function PremiumDivisions() {
                 </a>
               </div>
 
-              <div className="division-card warm-panel overflow-hidden rounded-[2.2rem] p-4 md:p-6">
+              <div className="division-card warm-panel overflow-hidden p-4 md:p-6">
                 <div className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr]">
-                  <div className="relative overflow-hidden rounded-[2rem] border border-[#5b4631]/10 bg-[#1f1a16]">
+                  <div className="relative overflow-hidden border border-[#5b4631]/10 bg-[#1f1a16]">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeFurniture.id}
@@ -538,13 +538,13 @@ export default function PremiumDivisions() {
                         />
                         <div className="relative flex h-full flex-col justify-between p-5 md:p-6">
                           <div className="flex items-center justify-between gap-4">
-                            <span className="rounded-full border border-white/12 bg-black/25 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#f7e9d0] backdrop-blur-md">
+                            <span className="border border-white/12 bg-black/25 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#f7e9d0] backdrop-blur-md">
                               Showroom carousel
                             </span>
                             <div className="flex items-center gap-2">
                               <button
                                 aria-label="Show previous furniture showroom item"
-                                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-black/25 text-white/80 backdrop-blur-md transition hover:border-white/25 hover:text-white"
+                                className="flex h-10 w-10 items-center justify-center border border-white/12 bg-black/25 text-white/80 backdrop-blur-md transition hover:border-white/25 hover:text-white"
                                 onClick={() =>
                                   setActiveFurnitureIndex(
                                     (current) =>
@@ -558,7 +558,7 @@ export default function PremiumDivisions() {
                               </button>
                               <button
                                 aria-label="Show next furniture showroom item"
-                                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-black/25 text-white/80 backdrop-blur-md transition hover:border-white/25 hover:text-white"
+                                className="flex h-10 w-10 items-center justify-center border border-white/12 bg-black/25 text-white/80 backdrop-blur-md transition hover:border-white/25 hover:text-white"
                                 onClick={() =>
                                   setActiveFurnitureIndex(
                                     (current) => (current + 1) % premiumDivisions.furniture.carousel.length
@@ -576,7 +576,7 @@ export default function PremiumDivisions() {
                               {activeFurniture.tags.map((tag) => (
                                 <span
                                   key={tag}
-                                  className="rounded-full border border-white/12 bg-black/25 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#f4e6ce] backdrop-blur-md"
+                                  className="border border-white/12 bg-black/25 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#f4e6ce] backdrop-blur-md"
                                 >
                                   {tag}
                                 </span>
@@ -596,7 +596,7 @@ export default function PremiumDivisions() {
                           key={item.id}
                           aria-current={activeFurnitureIndex === index}
                           aria-label={`Show furniture showroom item: ${item.title}`}
-                          className={`showroom-thumbnail group relative min-h-[118px] overflow-hidden rounded-[1.35rem] border text-left transition ${
+                          className={`showroom-thumbnail group relative min-h-[118px] overflow-hidden border text-left transition ${
                             activeFurnitureIndex === index
                               ? "border-[#7a5b3d]/45 shadow-[0_20px_55px_rgba(74,53,32,0.24)]"
                               : "border-[#5a4430]/10 hover:border-[#7a5b3d]/28"
@@ -609,7 +609,7 @@ export default function PremiumDivisions() {
                             style={{ backgroundImage: `url(${item.image})` }}
                           />
                           <span className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                          <span className="absolute bottom-3 left-3 rounded-full bg-black/35 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/86 backdrop-blur-md">
+                          <span className="absolute bottom-3 left-3 bg-black/35 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/86 backdrop-blur-md">
                             0{index + 1}
                           </span>
                         </button>
@@ -621,7 +621,7 @@ export default function PremiumDivisions() {
                         <div
                           key={item.title}
                           aria-label={item.title}
-                          className="min-h-[105px] rounded-[1.2rem] border border-[#5a4430]/10 bg-cover bg-center shadow-[0_16px_45px_rgba(74,53,32,0.12)]"
+                          className="min-h-[105px] border border-[#5a4430]/10 bg-cover bg-center shadow-[0_16px_45px_rgba(74,53,32,0.12)]"
                           style={{ backgroundImage: `url(${item.image})` }}
                         />
                       ))}
@@ -629,7 +629,7 @@ export default function PremiumDivisions() {
 
                     <a
                       aria-label="Contact Harkani.Plc on WhatsApp to request the furniture setup catalog"
-                      className="inline-flex w-fit items-center gap-2 rounded-full border border-[#5a4430]/20 bg-[#2a2018] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2a1f]"
+                      className="inline-flex w-fit items-center gap-2 border border-[#5a4430]/20 bg-[#2a2018] px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:-translate-y-0.5 hover:bg-[#3a2a1f]"
                       href={whatsappHref}
                       rel="noreferrer"
                       target="_blank"
@@ -644,7 +644,7 @@ export default function PremiumDivisions() {
                   {activeFurniture.highlights.map((highlight) => (
                     <motion.div
                       key={highlight}
-                      className="division-card interactive-surface warm-panel rounded-[1.5rem] p-5"
+                      className="division-card interactive-surface warm-panel p-5"
                       onMouseMove={updateInteractiveGlow}
                       style={{ "--surface-glow": "rgba(120, 83, 47, 0.16)" }}
                       whileHover={{ y: -4 }}

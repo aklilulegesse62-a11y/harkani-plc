@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 function NavLink({ item, onClick }) {
-  const className = "underlined-nav text-sm text-white/72";
+  const className = "underlined-nav text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-white/64";
 
   if (item.href.startsWith("/")) {
     return (
@@ -43,8 +43,8 @@ export default function SiteHeader({ links, homeHref = "/" }) {
       }`}
     >
       <div
-        className={`mx-auto flex w-full max-w-[1280px] items-center rounded-full px-4 py-3 transition-all duration-300 md:px-7 ${
-          isScrolled ? "glass-panel border border-white/10" : "border border-transparent bg-transparent"
+        className={`mx-auto flex w-full max-w-[1320px] items-center px-4 py-4 transition-all duration-300 md:px-7 ${
+          isScrolled ? "glass-panel border border-white/10" : "border-b border-white/0 bg-transparent"
         }`}
       >
         <nav className="hidden flex-1 items-center gap-6 lg:flex">
@@ -56,14 +56,15 @@ export default function SiteHeader({ links, homeHref = "/" }) {
         <div className="flex w-full items-center justify-between lg:w-auto lg:justify-center">
           <div className="w-10 lg:hidden" />
           <Link
-            className="brand-wordmark absolute left-1/2 -translate-x-1/2 text-center text-xl text-white"
+            className="brand-wordmark absolute left-1/2 flex -translate-x-1/2 items-center gap-4 text-center text-[0.82rem] text-white"
             href={homeHref}
           >
-            Harkani.Plc
+            <span aria-hidden="true" className="brand-mark" />
+            <span className="brand-name">Harkani Interiors</span>
           </Link>
           <button
             aria-label="Toggle navigation"
-            className="glass-panel flex h-10 w-10 items-center justify-center rounded-full border border-white/10 lg:hidden"
+            className="glass-panel flex h-10 w-10 items-center justify-center border border-white/10 lg:hidden"
             onClick={() => setIsMenuOpen((current) => !current)}
             type="button"
           >
@@ -82,7 +83,7 @@ export default function SiteHeader({ links, homeHref = "/" }) {
         {isMenuOpen ? (
           <motion.div
             animate={{ opacity: 1, y: 0 }}
-            className="mx-2 mt-3 rounded-[1.8rem] border border-white/10 bg-black/70 p-5 backdrop-blur-2xl lg:hidden"
+            className="mx-2 mt-3 border border-white/10 bg-black/80 p-5 backdrop-blur-2xl lg:hidden"
             exit={{ opacity: 0, y: -10 }}
             initial={{ opacity: 0, y: -10 }}
           >

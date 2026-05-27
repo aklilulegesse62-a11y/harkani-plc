@@ -99,7 +99,7 @@ export default function HomePage() {
           </AnimatePresence>
 
           <div className="hero-gradient absolute inset-0" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(233,201,157,0.2),transparent_32%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(216,193,138,0.1),transparent_28%,transparent_72%,rgba(216,193,138,0.045))]" />
 
           <div className="section-shell relative z-10 flex min-h-screen items-end pb-12 pt-28 md:pb-16 md:pt-36">
             <div className="grid w-full items-end gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
@@ -141,9 +141,9 @@ export default function HomePage() {
                   <button
                     key={slide.label}
                     aria-label={`Show ${slide.label}`}
-                    className={`group relative min-h-[132px] overflow-hidden rounded-[1.4rem] border transition ${
+                    className={`group relative min-h-[132px] overflow-hidden border transition ${
                       index === activeSlide
-                        ? "border-[#e9c99d]/45"
+                        ? "border-[#d8c18a]/45"
                         : "border-white/10 hover:border-white/22"
                     }`}
                     onClick={() => setActiveSlide(index)}
@@ -154,7 +154,7 @@ export default function HomePage() {
                       style={{ backgroundImage: `url(${slide.image})` }}
                     />
                     <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                    <span className="absolute bottom-4 left-4 text-left text-xs font-semibold uppercase tracking-[0.24em] text-white/78">
+                    <span className="absolute bottom-4 left-4 text-left text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-white/70">
                       {slide.label}
                     </span>
                   </button>
@@ -185,7 +185,7 @@ export default function HomePage() {
             <div className="mt-10 grid gap-5 lg:grid-cols-3">
               {serviceGroups.map((group, index) => (
                 <Reveal key={group.title} delay={index * 0.05}>
-                  <article className="interactive-surface h-full overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.035]">
+                  <article className="interactive-surface h-full overflow-hidden border border-white/10 bg-white/[0.025]">
                     <div
                       className="h-64 bg-cover bg-center"
                       style={{ backgroundImage: `url(${group.image})` }}
@@ -196,7 +196,7 @@ export default function HomePage() {
                         {group.groups
                           ? group.groups.map((subgroup) => (
                               <div key={subgroup.title}>
-                                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#e9c99d]">
+                                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d8c18a]">
                                   {subgroup.title}
                                 </p>
                                 <div className="mt-3 space-y-2">
@@ -239,7 +239,7 @@ export default function HomePage() {
               {featuredProjects.map((project, index) => (
                 <Reveal key={project.id} delay={index * 0.06}>
                   <Link
-                    className="project-card interactive-surface group block overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/[0.03]"
+                    className="project-card interactive-surface group block overflow-hidden border border-white/10 bg-white/[0.025]"
                     href="/portfolio"
                   >
                     <div
@@ -248,7 +248,7 @@ export default function HomePage() {
                     />
                     <div className="flex items-center justify-between gap-4 p-5">
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#e9c99d]">
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d8c18a]">
                           {project.category}
                         </p>
                         <h3 className="mt-2 text-xl font-semibold text-white">{project.title}</h3>
@@ -274,7 +274,7 @@ export default function HomePage() {
 
               <div className="mt-8 grid gap-4">
                 {testimonials.map((item) => (
-                  <div key={item.name} className="glass-panel rounded-[1.6rem] p-5">
+                  <div key={item.name} className="glass-panel p-5">
                     <p className="text-sm leading-7 text-white/72">"{item.quote}"</p>
                     <p className="mt-4 font-semibold text-white">{item.name}</p>
                     <p className="text-sm text-white/52">{item.location}</p>
@@ -286,7 +286,7 @@ export default function HomePage() {
             <Reveal className="grid min-h-[560px] gap-4 md:grid-cols-[1.1fr_0.9fr]" delay={0.08}>
               <div
                 aria-label="Premium furnished living room"
-                className="min-h-[360px] rounded-[2rem] border border-white/10 bg-cover bg-center shadow-[0_30px_90px_rgba(0,0,0,0.32)]"
+                className="min-h-[360px] border border-white/10 bg-cover bg-center shadow-[0_30px_90px_rgba(0,0,0,0.32)]"
                 style={{ backgroundImage: `url(${trustVisuals[0]})` }}
               />
               <div className="grid gap-4">
@@ -294,7 +294,7 @@ export default function HomePage() {
                   <div
                     key={image}
                     aria-label={`Trust visual ${index + 2}`}
-                    className="min-h-[170px] rounded-[1.6rem] border border-white/10 bg-cover bg-center"
+                    className="min-h-[170px] border border-white/10 bg-cover bg-center"
                     style={{ backgroundImage: `url(${image})` }}
                   />
                 ))}
@@ -305,7 +305,7 @@ export default function HomePage() {
 
         <section id="contact" className="pb-16 pt-12 md:pb-24 md:pt-16">
           <div className="section-shell">
-            <Reveal className="relative overflow-hidden rounded-[2.4rem] border border-white/10 bg-[#0c0a08] p-6 md:p-10 xl:p-14">
+            <Reveal className="relative overflow-hidden border border-white/10 bg-[#0c0a08] p-6 md:p-10 xl:p-14">
               <div
                 className="absolute inset-0 opacity-28"
                 style={{ backgroundImage: `url(${trustVisuals[1]})`, backgroundSize: "cover", backgroundPosition: "center" }}

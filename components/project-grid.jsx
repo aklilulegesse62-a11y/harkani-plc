@@ -30,9 +30,9 @@ export default function ProjectGrid() {
           return (
             <button
               key={filter}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
+              className={`border px-4 py-2 text-sm font-semibold uppercase tracking-[0.12em] transition-all duration-300 ${
                 isActive
-                  ? "border-[#e9c99d]/45 bg-[#e9c99d]/12 text-[#f7e0bd]"
+                  ? "border-[#d8c18a]/45 bg-[#d8c18a]/12 text-[#f1eadc]"
                   : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:text-white"
               }`}
               onClick={() => setSelectedFilter(filter)}
@@ -55,7 +55,7 @@ export default function ProjectGrid() {
               aria-label={project.title}
               layout
               animate={{ opacity: 1, scale: 1 }}
-              className={`project-card interactive-surface glass-panel group relative overflow-hidden rounded-[2rem] border border-white/10 ${sizeClasses[project.size]}`}
+              className={`project-card interactive-surface glass-panel group relative overflow-hidden border border-white/10 ${sizeClasses[project.size]}`}
               exit={{ opacity: 0, scale: 0.95 }}
               initial={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
