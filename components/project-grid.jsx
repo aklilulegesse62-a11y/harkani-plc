@@ -92,9 +92,6 @@ export default function ProjectGrid() {
                   <h3 className="max-w-xs text-2xl font-semibold text-white md:text-[1.9rem]">
                     {project.title}
                   </h3>
-                  <p className="max-w-md text-sm leading-6 text-white/72 opacity-0 transition duration-300 group-hover:opacity-100">
-                    {project.summary}
-                  </p>
                 </div>
               </div>
             </motion.article>
@@ -104,4 +101,3 @@ export default function ProjectGrid() {
     </div>
   );
 }
-

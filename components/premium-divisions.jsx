@@ -21,6 +21,8 @@ import { useEffect, useRef, useState } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const furnitureIcons = [Sofa, MonitorSmartphone, Sparkles, Layers3];
+const whatsappHref =
+  "https://wa.me/251951108127?text=Hello%20Harkani.Plc%2C%20I%20want%20to%20start%20a%20premium%20interior%2C%20finishing%2C%20or%20full%20setup%20project.";
 
 function updateInteractiveGlow(event) {
   const bounds = event.currentTarget.getBoundingClientRect();
@@ -153,10 +155,19 @@ export default function PremiumDivisions() {
       <div className="section-shell">
         <Reveal className="max-w-4xl">
           <span className="eyebrow">Premium Divisions</span>
-          <h2 className="section-title mt-6">{premiumDivisions.intro.title}</h2>
+          <h2 className="section-title mt-6">One team. Three divisions.</h2>
           <p className="mt-6 text-lg leading-8 text-white/68">
             {premiumDivisions.intro.description}
           </p>
+          <a
+            className="luxury-button mt-8 inline-flex items-center gap-2"
+            href={whatsappHref}
+            rel="noreferrer"
+            target="_blank"
+          >
+            Choose a Division
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </Reveal>
 
         <Reveal className="mt-8" delay={0.08}>
@@ -219,6 +230,15 @@ export default function PremiumDivisions() {
                     </div>
                   ))}
                 </div>
+                <a
+                  className="division-copy-line luxury-button mt-8 inline-flex items-center gap-2"
+                  href={whatsappHref}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Start Interior Project
+                  <ArrowRight className="h-4 w-4" />
+                </a>
               </div>
 
               <div className="grid gap-4">
@@ -248,42 +268,10 @@ export default function PremiumDivisions() {
 
                     <div className="space-y-4">
                       <h4 className="max-w-lg text-3xl font-semibold text-white">
-                        Luxury interior scenes designed for atmosphere, recall, and premium comfort.
+                        Interior spaces with a finished look.
                       </h4>
-                      <p className="max-w-xl text-sm leading-7 text-white/72">
-                        Restaurant seating plans, cafe corners, executive receptions, and private
-                        suites all shaped to feel elevated from the first interaction.
-                      </p>
                     </div>
                   </div>
-
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    className="glass-panel absolute right-4 top-4 hidden w-64 rounded-[1.4rem] p-4 md:block"
-                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#ffe37d]">
-                      Signature mood
-                    </p>
-                    <p className="mt-3 text-sm leading-6 text-white/72">
-                      Dark navy foundations, yellow accents, and light-led focal points that read
-                      premium day and night.
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    className="glass-panel absolute bottom-4 left-4 hidden max-w-xs rounded-[1.4rem] p-4 lg:block"
-                    transition={{ duration: 8.2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.26em] text-white/56">
-                      Spatial intent
-                    </p>
-                    <p className="mt-3 text-sm leading-6 text-white/72">
-                      Each zone balances flow, social energy, and material warmth to support the
-                      business model as much as the look.
-                    </p>
-                  </motion.div>
                 </motion.div>
 
                 <div className="grid gap-4 md:grid-cols-3">
@@ -306,7 +294,6 @@ export default function PremiumDivisions() {
                           {item.tag}
                         </span>
                         <h4 className="text-xl font-semibold text-white">{item.title}</h4>
-                        <p className="mt-2 text-sm leading-6 text-white/72">{item.detail}</p>
                       </div>
                     </motion.article>
                   ))}
@@ -352,21 +339,34 @@ export default function PremiumDivisions() {
                   {premiumDivisions.construction.description}
                 </p>
 
-                <div className="division-copy-line mt-8 space-y-3">
+                <div className="division-copy-line mt-8 flex flex-wrap gap-3">
                   {[
-                    "Blueprint thinking with premium finishing discipline",
-                    "Clear site coordination for restaurants, offices, and civic environments",
-                    "Parallax-led reporting rhythm built for remote decision makers"
+                    "Gypsum & partitions",
+                    "Tiles & skirting",
+                    "Paint work",
+                    "Electric wiring",
+                    "Aluminum",
+                    "Sanitary",
+                    "Epoxy flooring"
                   ].map((item) => (
-                    <div
+                    <span
                       key={item}
-                      className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/74"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#7ea5ff]/20 bg-[#7ea5ff]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#dce6ff]"
                     >
                       <CircleDashed className="h-4 w-4 text-[#7ea5ff]" />
                       {item}
-                    </div>
+                    </span>
                   ))}
                 </div>
+                <a
+                  className="division-copy-line luxury-button mt-8 inline-flex items-center gap-2"
+                  href={whatsappHref}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Start Finishing Work
+                  <ArrowRight className="h-4 w-4" />
+                </a>
               </div>
 
               <div className="grid gap-4 md:grid-cols-3">
@@ -391,8 +391,8 @@ export default function PremiumDivisions() {
                   beforeImage={premiumDivisions.construction.comparison.beforeImage}
                   beforeLabel={premiumDivisions.construction.comparison.beforeLabel}
                   className="border border-white/10 bg-white/[0.03]"
-                  description="Use the slider to compare the step change between a raw shell and a finished, client-ready interior."
-                  title="Before / after project control"
+                  description="Drag to compare raw shell and finished handover."
+                  title="Before / after finish"
                 />
 
                 <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -420,7 +420,7 @@ export default function PremiumDivisions() {
                   Execution timeline
                 </p>
                 <h4 className="mt-4 max-w-lg text-3xl font-semibold text-white">
-                  A disciplined process for premium finishing and controlled handover.
+                  Four steps from site audit to handover.
                 </h4>
 
                 <div className="mt-8 space-y-5">
@@ -434,6 +434,15 @@ export default function PremiumDivisions() {
                     </div>
                   ))}
                 </div>
+                <a
+                  className="secondary-button mt-8 inline-flex items-center gap-2"
+                  href={whatsappHref}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Talk About Timeline
+                  <ArrowRight className="h-4 w-4" />
+                </a>
               </div>
             </div>
           </div>
@@ -466,8 +475,7 @@ export default function PremiumDivisions() {
                     Everything in one place
                   </p>
                   <p className="mt-3 text-sm leading-7 text-[#524130]">
-                    Furniture, decor, appliances, electronics, styling, and move-in readiness are
-                    aligned as one premium catalog experience instead of separate procurement chaos.
+                    Furniture, decor, electronics, and move-in readiness in one package.
                   </p>
                 </div>
 
@@ -489,11 +497,19 @@ export default function PremiumDivisions() {
                           </div>
                           <p className="text-lg font-semibold text-[#201a15]">{item.title}</p>
                         </div>
-                        <p className="mt-4 text-sm leading-7 text-[#5b4a3b]">{item.detail}</p>
                       </motion.div>
                     );
                   })}
                 </div>
+                <a
+                  className="division-copy-line luxury-button mt-8 inline-flex items-center gap-2"
+                  href={whatsappHref}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Order Furniture Setup
+                  <ArrowRight className="h-4 w-4" />
+                </a>
               </div>
 
               <div className="division-card warm-panel overflow-hidden rounded-[2.2rem] p-4 md:p-6">
@@ -561,7 +577,6 @@ export default function PremiumDivisions() {
                               ))}
                             </div>
                             <h4 className="text-3xl font-semibold text-white">{activeFurniture.title}</h4>
-                            <p className="text-sm leading-7 text-white/74">{activeFurniture.subtitle}</p>
                           </div>
                         </div>
                       </motion.div>
@@ -577,9 +592,17 @@ export default function PremiumDivisions() {
                         Premium showroom flow for clients who want a complete answer.
                       </h4>
                       <p className="mt-3 text-sm leading-7 text-[#59493a]">
-                        One curated destination for furniture, electronics, decor, styling, and
-                        all the small pieces that make a space feel truly finished.
+                        Furniture, electronics, decor, and styling selected together.
                       </p>
+                      <a
+                        className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#5a4430]/20 bg-[#2a2018] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2a1f]"
+                        href={whatsappHref}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Request Catalog
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
                     </div>
 
                     <div className="space-y-3">
@@ -601,7 +624,6 @@ export default function PremiumDivisions() {
                               0{index + 1}
                             </span>
                           </div>
-                          <p className="mt-2 text-sm leading-6 opacity-75">{item.subtitle}</p>
                         </button>
                       ))}
                     </div>
