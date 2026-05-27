@@ -88,7 +88,7 @@ export default function PortfolioPage() {
             style={{ backgroundImage: `url(${visualProof[6].image})` }}
           />
           <div className="hero-gradient absolute inset-0" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(216,193,138,0.07)_55%,transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(233,201,157,0.18),transparent_32%)]" />
 
           <div className="section-shell relative z-10 flex min-h-screen items-end pb-14 pt-28 md:pb-20">
             <div className="grid w-full gap-10 xl:grid-cols-[minmax(0,0.95fr)_520px] xl:items-end">
@@ -123,7 +123,7 @@ export default function PortfolioPage() {
                   <button
                     key={item.image}
                     aria-label={`Open ${item.title}`}
-                    className={`interactive-surface group overflow-hidden border border-white/10 ${
+                    className={`interactive-surface group overflow-hidden rounded-[1.5rem] border border-white/10 ${
                       index === 0 ? "row-span-2 min-h-[420px]" : "min-h-[200px]"
                     }`}
                     onClick={() => setActiveProject(projects[index])}
@@ -163,10 +163,10 @@ export default function PortfolioPage() {
                 <button
                   key={filter}
                   aria-current={activeFilter === filter}
-                  className={`border px-5 py-3 text-sm font-semibold uppercase tracking-[0.12em] transition ${
+                  className={`rounded-full border px-5 py-3 text-sm font-semibold transition ${
                     activeFilter === filter
-                      ? "border-[#d8c18a]/50 bg-[#d8c18a] text-[#090907]"
-                      : "border-white/10 bg-white/[0.025] text-white/68 hover:border-[#d8c18a]/35 hover:text-white"
+                      ? "border-[#e9c99d]/50 bg-[#e9c99d] text-[#130d08]"
+                      : "border-white/10 bg-white/[0.03] text-white/68 hover:border-[#e9c99d]/35 hover:text-white"
                   }`}
                   onClick={() => setActiveFilter(filter)}
                   type="button"
@@ -195,7 +195,7 @@ export default function PortfolioPage() {
                 <motion.button
                   key={project.id}
                   aria-label={`Open ${project.title}`}
-                  className="interactive-surface mb-4 block w-full break-inside-avoid overflow-hidden border border-white/10 bg-white/[0.02] text-left"
+                  className="interactive-surface mb-4 block w-full break-inside-avoid overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.025] text-left"
                   initial={{ opacity: 0, y: 28 }}
                   onClick={() => setActiveProject(project)}
                   type="button"
@@ -211,7 +211,7 @@ export default function PortfolioPage() {
                     <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/46">
                       {project.category}
                     </span>
-                    <Maximize2 className="h-4 w-4 text-[#d8c18a]" />
+                    <Maximize2 className="h-4 w-4 text-[#e9c99d]" />
                   </div>
                 </motion.button>
               ))}
@@ -268,21 +268,21 @@ export default function PortfolioPage() {
 
                 return (
                   <Reveal key={story.title} delay={index * 0.05}>
-                    <article className="interactive-surface grid min-h-full overflow-hidden border border-white/10 bg-white/[0.025] md:grid-cols-[0.95fr_1.05fr]">
+                    <article className="interactive-surface grid min-h-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] md:grid-cols-[0.95fr_1.05fr]">
                       <div
                         className="min-h-[320px] bg-cover bg-center"
                         style={{ backgroundImage: `url(${project.image})` }}
                       />
                       <div className="flex flex-col justify-between p-6">
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d8c18a]">
+                          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#e9c99d]">
                             {project.category}
                           </p>
                           <h3 className="mt-4 text-3xl font-semibold text-white">{story.title}</h3>
                           <p className="mt-4 text-sm leading-7 text-white/66">{story.description}</p>
                           <div className="mt-6 grid gap-2">
                             {story.notes.map((note) => (
-                              <p key={note} className="border border-white/10 bg-white/[0.025] px-4 py-2 text-sm text-white/68">
+                              <p key={note} className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/68">
                                 {note}
                               </p>
                             ))}
@@ -307,7 +307,7 @@ export default function PortfolioPage() {
 
         <section id="contact" className="pb-16 pt-10 md:pb-24">
           <div className="section-shell">
-            <Reveal className="relative overflow-hidden border border-white/10 bg-[#0c0a08] p-6 md:p-12">
+            <Reveal className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0c0a08] p-6 md:p-12">
               <div
                 className="absolute inset-0 opacity-28"
                 style={{ backgroundImage: `url(${trustVisuals[2]})`, backgroundPosition: "center", backgroundSize: "cover" }}
@@ -351,7 +351,7 @@ export default function PortfolioPage() {
           >
             <button
               aria-label="Close project view"
-              className="fixed right-4 top-4 z-[90] flex h-12 w-12 items-center justify-center border border-white/10 bg-white/10 text-white backdrop-blur-xl"
+              className="fixed right-4 top-4 z-[90] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur-xl"
               onClick={() => setActiveProject(null)}
               type="button"
             >
@@ -360,7 +360,7 @@ export default function PortfolioPage() {
 
             <motion.article
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              className="mx-auto grid min-h-[calc(100vh-1.5rem)] w-full max-w-[1320px] overflow-hidden border border-white/10 bg-[#080706] lg:grid-cols-[minmax(0,1fr)_380px]"
+              className="mx-auto grid min-h-[calc(100vh-1.5rem)] w-full max-w-[1320px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#080706] lg:grid-cols-[minmax(0,1fr)_380px]"
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -371,7 +371,7 @@ export default function PortfolioPage() {
               />
               <aside className="flex flex-col justify-between p-6 md:p-8">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d8c18a]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#e9c99d]">
                     {activeProject.category}
                   </p>
                   <h2 className="mt-5 text-4xl font-semibold leading-none text-white md:text-5xl">

@@ -35,10 +35,10 @@ export default function AnimatedCounter({
   return (
     <div
       ref={ref}
-      className={`glass-panel interactive-surface px-5 py-5 md:px-7 ${className}`}
+      className={`glass-panel interactive-surface rounded-[1.8rem] px-5 py-5 md:px-7 ${className}`}
     >
       <motion.div
-        className={`text-[1.65rem] font-medium tracking-[-0.04em] md:text-[2rem] ${valueClassName}`}
+        className={`text-[1.65rem] font-semibold md:text-[2rem] ${valueClassName}`}
         initial={{ opacity: 0.4 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1 }}
