@@ -13,6 +13,7 @@ import {
   serviceGroups,
   stats,
   testimonials,
+  trustVisuals,
   visualProof
 } from "@/lib/site-data";
 import { AnimatePresence, motion } from "framer-motion";
@@ -440,6 +441,24 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
+
+              <Reveal className="grid min-h-[560px] gap-4 md:grid-cols-[1.1fr_0.9fr]" delay={0.06}>
+                <div
+                  aria-label="Premium furnished living room"
+                  className="min-h-[360px] rounded-[2rem] border border-white/10 bg-cover bg-center shadow-[0_30px_90px_rgba(0,0,0,0.32)]"
+                  style={{ backgroundImage: `url(${trustVisuals[0]})` }}
+                />
+                <div className="grid gap-4">
+                  {trustVisuals.slice(1).map((image, index) => (
+                    <div
+                      key={image}
+                      aria-label={`Trust visual ${index + 2}`}
+                      className="min-h-[170px] rounded-[1.6rem] border border-white/10 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${image})` }}
+                    />
+                  ))}
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -567,21 +586,23 @@ export default function HomePage() {
               </a>
             </Reveal>
 
-            <div className="mt-10 grid auto-rows-[160px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid auto-rows-[170px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {visualProof.map((item, index) => (
-                <Reveal key={item.title} delay={index * 0.04}>
+                <Reveal
+                  key={item.title}
+                  className={`min-h-[170px] ${
+                    index === 0 || index === 5 || index === 9
+                      ? "sm:row-span-2 sm:min-h-[356px]"
+                      : ""
+                  } ${index === 2 || index === 7 ? "lg:col-span-2" : ""}`}
+                  delay={index * 0.04}
+                >
                   <div
-                    className={`group relative overflow-hidden rounded-[1.2rem] border border-white/10 bg-cover bg-center ${
-                      index === 0 || index === 5 || index === 9
-                        ? "min-h-[340px] sm:row-span-2"
-                        : "min-h-[160px]"
-                    } ${index === 2 || index === 7 ? "lg:col-span-2" : ""}`}
+                    aria-label={item.title}
+                    className="group relative h-full overflow-hidden rounded-[1.2rem] border border-white/10 bg-cover bg-center"
                     style={{ backgroundImage: `url(${item.image})` }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-80 transition group-hover:opacity-55" />
-                    <span className="absolute bottom-4 left-4 rounded-full bg-black/45 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/82 backdrop-blur-md">
-                      {item.title}
-                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-transparent opacity-65 transition group-hover:opacity-25" />
                   </div>
                 </Reveal>
               ))}

@@ -52,6 +52,7 @@ export default function ProjectGrid() {
           {filteredProjects.map((project) => (
             <motion.article
               key={project.id}
+              aria-label={project.title}
               layout
               animate={{ opacity: 1, scale: 1 }}
               className={`project-card interactive-surface glass-panel group relative overflow-hidden rounded-[2rem] border border-white/10 ${sizeClasses[project.size]}`}
@@ -73,27 +74,10 @@ export default function ProjectGrid() {
               <div
                 className="project-media absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: `linear-gradient(180deg, rgba(5,5,5,0.1), rgba(5,5,5,0.72)), url(${project.image})`
+                  backgroundImage: `url(${project.image})`
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
-
-              <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <span className="rounded-full border border-white/15 bg-black/20 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white/80 backdrop-blur-md">
-                    {project.category}
-                  </span>
-                  <span className="text-xs uppercase tracking-[0.22em] text-white/55">
-                    {project.location}
-                  </span>
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="max-w-xs text-2xl font-semibold text-white md:text-[1.9rem]">
-                    {project.title}
-                  </h3>
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/10" />
             </motion.article>
           ))}
         </AnimatePresence>
