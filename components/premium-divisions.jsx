@@ -251,7 +251,7 @@ export default function PremiumDivisions() {
                   <div
                     className="absolute inset-0 bg-cover bg-center transition duration-700 ease-out group-hover:scale-[1.08]"
                     style={{
-                      backgroundImage: `linear-gradient(180deg, rgba(7, 12, 28, 0.05), rgba(7, 12, 28, 0.58)), url(${premiumDivisions.interiors.gallery[1].image})`
+                      backgroundImage: `linear-gradient(180deg, rgba(7, 12, 28, 0.05), rgba(7, 12, 28, 0.58)), url(${premiumDivisions.interiors.showcaseImage})`
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#03111f] via-[#03111f]/10 to-transparent" />
@@ -513,7 +513,7 @@ export default function PremiumDivisions() {
               </div>
 
               <div className="division-card warm-panel overflow-hidden rounded-[2.2rem] p-4 md:p-6">
-                <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+                <div className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr]">
                   <div className="relative overflow-hidden rounded-[2rem] border border-[#5b4631]/10 bg-[#1f1a16]">
                     <AnimatePresence mode="wait">
                       <motion.div
@@ -584,49 +584,52 @@ export default function PremiumDivisions() {
                   </div>
 
                   <div className="space-y-4">
-                    <div className="rounded-[1.8rem] border border-[#5a4430]/10 bg-white/56 p-5 shadow-[0_24px_70px_rgba(74,53,32,0.12)]">
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#6d5237]">
-                        Catalog feel
-                      </p>
-                      <h4 className="mt-3 text-2xl font-semibold text-[#201a15]">
-                        Premium showroom flow for clients who want a complete answer.
-                      </h4>
-                      <p className="mt-3 text-sm leading-7 text-[#59493a]">
-                        Furniture, electronics, decor, and styling selected together.
-                      </p>
-                      <a
-                        className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#5a4430]/20 bg-[#2a2018] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2a1f]"
-                        href={whatsappHref}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        Request Catalog
-                        <ArrowRight className="h-4 w-4" />
-                      </a>
-                    </div>
-
-                    <div className="space-y-3">
+                    <div className="grid grid-cols-2 gap-3">
                       {premiumDivisions.furniture.carousel.map((item, index) => (
                         <button
                           key={item.id}
                           aria-current={activeFurnitureIndex === index}
-                          className={`showroom-thumbnail w-full rounded-[1.5rem] border p-4 text-left transition ${
+                          aria-label={`Show ${item.title}`}
+                          className={`showroom-thumbnail group relative min-h-[118px] overflow-hidden rounded-[1.35rem] border text-left transition ${
                             activeFurnitureIndex === index
-                              ? "border-[#7a5b3d]/30 bg-[#2a2018] text-white shadow-[0_24px_70px_rgba(74,53,32,0.22)]"
-                              : "border-[#5a4430]/10 bg-white/46 text-[#2b2118] hover:border-[#7a5b3d]/24 hover:bg-white/62"
+                              ? "border-[#7a5b3d]/45 shadow-[0_20px_55px_rgba(74,53,32,0.24)]"
+                              : "border-[#5a4430]/10 hover:border-[#7a5b3d]/28"
                           }`}
                           onClick={() => setActiveFurnitureIndex(index)}
                           type="button"
                         >
-                          <div className="flex items-center justify-between gap-4">
-                            <span className="text-sm font-semibold">{item.title}</span>
-                            <span className="text-[0.65rem] uppercase tracking-[0.24em] opacity-70">
-                              0{index + 1}
-                            </span>
-                          </div>
+                          <span
+                            className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-[1.08]"
+                            style={{ backgroundImage: `url(${item.image})` }}
+                          />
+                          <span className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                          <span className="absolute bottom-3 left-3 rounded-full bg-black/35 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/86 backdrop-blur-md">
+                            0{index + 1}
+                          </span>
                         </button>
                       ))}
                     </div>
+
+                    <div className="grid grid-cols-3 gap-3">
+                      {premiumDivisions.furniture.moodboard.map((item) => (
+                        <div
+                          key={item.title}
+                          aria-label={item.title}
+                          className="min-h-[105px] rounded-[1.2rem] border border-[#5a4430]/10 bg-cover bg-center shadow-[0_16px_45px_rgba(74,53,32,0.12)]"
+                          style={{ backgroundImage: `url(${item.image})` }}
+                        />
+                      ))}
+                    </div>
+
+                    <a
+                      className="inline-flex w-fit items-center gap-2 rounded-full border border-[#5a4430]/20 bg-[#2a2018] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#3a2a1f]"
+                      href={whatsappHref}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Request Catalog
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
                   </div>
                 </div>
 
