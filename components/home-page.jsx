@@ -598,9 +598,12 @@ export default function HomePage() {
                 >
                   <img
                     alt={logo.name}
-                    className="max-h-12 w-auto max-w-full object-contain contrast-125 saturate-110"
-                    loading="lazy"
+                    className="h-12 w-auto max-w-full object-contain contrast-125 saturate-110"
+                    decoding="async"
+                    height="48"
+                    loading="eager"
                     src={logo.image}
+                    width="90"
                   />
                 </div>
               ))}
