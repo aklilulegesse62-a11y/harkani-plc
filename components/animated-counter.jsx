@@ -1,6 +1,6 @@
 "use client";
 
-import { animate, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export default function AnimatedCounter({
@@ -21,17 +21,26 @@ export default function AnimatedCounter({
       return undefined;
     }
 
+    const duration = 1400;
+    const start = window.performance.now();
+    let animationFrame = 0;
+
     setDisplayValue(0);
 
-    const controls = animate(0, value, {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate(latest) {
-        setDisplayValue(Math.round(latest));
-      }
-    });
+    const tick = (timestamp) => {
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-    return () => controls.stop();
+      setDisplayValue(Math.round(easedProgress * value));
+
+      if (progress < 1) {
+        animationFrame = window.requestAnimationFrame(tick);
+      }
+    };
+
+    animationFrame = window.requestAnimationFrame(tick);
+
+    return () => window.cancelAnimationFrame(animationFrame);
   }, [isInView, value]);
 
   return (
