@@ -14,12 +14,14 @@ export default function AnimatedCounter({
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: viewAmount });
-  const [displayValue, setDisplayValue] = useState(typeof value === "number" ? 0 : value);
+  const [displayValue, setDisplayValue] = useState(value);
 
   useEffect(() => {
     if (!isInView || typeof value !== "number") {
       return undefined;
     }
+
+    setDisplayValue(0);
 
     const controls = animate(0, value, {
       duration: 1.4,
