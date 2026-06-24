@@ -4,9 +4,11 @@ import BeforeAfterSlider from "@/components/before-after-slider";
 import CursorGlow from "@/components/cursor-glow";
 import Reveal from "@/components/reveal";
 import SiteHeader from "@/components/site-header";
-import { filters, projects, trustVisuals, visualProof } from "@/lib/site-data";
+import SocialLinks from "@/components/social-links";
+import WhatsAppWidget from "@/components/whatsapp-widget";
+import { portfolioDivisions, projects, trustVisuals, visualProof } from "@/lib/site-data";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Grid3X3, Mail, Maximize2, MessageCircle, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Grid3X3, Images, Mail, MessageCircle, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,8 +17,7 @@ const whatsappHref =
 
 const portfolioLinks = [
   { label: "Home", href: "/" },
-  { label: "Categories", href: "#categories" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Divisions", href: "#portfolio-divisions" },
   { label: "Compare", href: "#compare" },
   { label: "Details", href: "#details" },
   { label: "Start", href: "#contact" }
@@ -24,28 +25,25 @@ const portfolioLinks = [
 
 const detailStories = [
   {
-    title: "Hospitality Atmosphere",
+    title: "Interior Design Division",
     projectId: "restaurant-interior",
-    description: "Restaurant and cafe interiors built around mood, seating comfort, lighting, and guest flow.",
-    notes: ["Restaurant interior design", "Cafe seating and counters", "Furnishing and decor"]
+    description:
+      "Interior concepts, consultation, supervision, and full interior build packages for hospitality, offices, homes, and commercial spaces.",
+    notes: ["Interior design", "Consultation and supervision", "Full interior construction and decoration"]
   },
   {
-    title: "Commercial Presence",
-    projectId: "office-reception-render",
-    description: "Office reception, workstation, boardroom, and commercial setup delivered with a polished first impression.",
-    notes: ["Reception desks", "Office tables and shelves", "Glass partitions and lighting"]
+    title: "Furniture Division",
+    projectId: "kitchen-furniture",
+    description:
+      "Custom furniture and ready-space setup for homes and offices, from cabinetry and closets to reception desks and built-in shelves.",
+    notes: ["Kitchen cabinets", "TV units and bedroom closets", "Tables, reception desks, and shelves"]
   },
   {
-    title: "Home Setup",
-    projectId: "minimal-living",
-    description: "Warm residential packages with furniture, kitchen cabinets, bedroom closets, TV units, and styling.",
-    notes: ["Kitchen cabinets", "TV units and closets", "Decor and electronics setup"]
-  },
-  {
-    title: "Finishing Execution",
+    title: "Finishing & Construction Division",
     projectId: "government-boardroom",
-    description: "Technical finishing work managed from gypsum and partitions to wiring, aluminum, sanitary, and epoxy.",
-    notes: ["Ceiling and partition", "Electrical installations", "Ceramic, paint, and epoxy"]
+    description:
+      "Technical finishing and construction execution for raw spaces, managed through site coordination, installation, and handover.",
+    notes: ["Gypsum board ceilings and partitions", "Ceramic, paint, wiring, and aluminum", "Sanitary fittings and epoxy flooring"]
   }
 ];
 
@@ -53,28 +51,26 @@ function getProject(projectId) {
   return projects.find((project) => project.id === projectId) || projects[0];
 }
 
-function projectHeight(size, index) {
-  if (size === "tall") return "h-[520px]";
-  if (size === "wide") return "h-[360px]";
-  return index % 3 === 0 ? "h-[430px]" : "h-[330px]";
+function backgroundImageUrl(image) {
+  return 'url("' + image.replace(/"/g, '\"') + '")';
 }
 
-export default function PortfolioPage() {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [activeProject, setActiveProject] = useState(null);
+function getPreviewItems(division) {
+  return division.gallery.slice(0, 4);
+}
 
-  const filteredProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+
+export default function PortfolioPage() {
+  const [activeProject, setActiveProject] = useState(null);
+  const [activeDivision, setActiveDivision] = useState(null);
 
   useEffect(() => {
-    document.body.style.overflow = activeProject ? "hidden" : "";
+    document.body.style.overflow = activeProject || activeDivision ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [activeProject]);
+  }, [activeProject, activeDivision]);
 
   return (
     <div className="page-shell">
@@ -85,7 +81,7 @@ export default function PortfolioPage() {
         <section className="relative min-h-screen overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${visualProof[6].image})` }}
+            style={{ backgroundImage: backgroundImageUrl(visualProof[6].image) }}
           />
           <div className="hero-gradient absolute inset-0" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(233,201,157,0.18),transparent_32%)]" />
@@ -98,8 +94,8 @@ export default function PortfolioPage() {
                   Visual proof before the conversation.
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-8 text-white/72 md:text-lg">
-                  Explore interiors, furniture, finishing, commercial spaces, hospitality projects,
-                  and full setup work in a quieter image-led experience.
+                  Explore the same three Harkani divisions from the home page: interior design,
+                  furniture, and finishing construction, all through an image-led portfolio.
                 </p>
                 <div className="mt-9 flex flex-wrap gap-4">
                   <a
@@ -119,7 +115,7 @@ export default function PortfolioPage() {
               </Reveal>
 
               <Reveal className="grid grid-cols-2 gap-3" delay={0.08}>
-                {[visualProof[0], visualProof[5], visualProof[11], visualProof[2]].map((item, index) => (
+                {[visualProof[0], visualProof[5], visualProof[2]].map((item, index) => (
                   <button
                     key={item.image}
                     aria-label={`Open ${item.title}`}
@@ -131,7 +127,7 @@ export default function PortfolioPage() {
                   >
                     <span
                       className="block h-full bg-cover bg-center transition duration-700 group-hover:scale-[1.08]"
-                      style={{ backgroundImage: `url(${item.image})` }}
+                      style={{ backgroundImage: backgroundImageUrl(item.image) }}
                     />
                   </button>
                 ))}
@@ -140,12 +136,12 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section id="categories" className="py-16 md:py-24">
+        <section id="portfolio-divisions" className="py-16 md:py-24">
           <div className="section-shell">
             <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
-                <span className="eyebrow">Project Categories</span>
-                <h2 className="section-title mt-6">Browse by space type.</h2>
+                <span className="eyebrow">Portfolio Divisions</span>
+                <h2 className="section-title mt-6">Images grouped by division.</h2>
               </div>
               <a
                 className="luxury-button inline-flex w-fit items-center gap-2"
@@ -158,63 +154,101 @@ export default function PortfolioPage() {
               </a>
             </Reveal>
 
-            <Reveal className="mt-9 flex flex-wrap gap-3" delay={0.08}>
-              {filters.map((filter) => (
-                <button
-                  key={filter}
-                  aria-current={activeFilter === filter}
-                  className={`rounded-full border px-5 py-3 text-sm font-semibold transition ${
-                    activeFilter === filter
-                      ? "border-[#e9c99d]/50 bg-[#e9c99d] text-[#130d08]"
-                      : "border-white/10 bg-white/[0.03] text-white/68 hover:border-[#e9c99d]/35 hover:text-white"
-                  }`}
-                  onClick={() => setActiveFilter(filter)}
-                  type="button"
-                >
-                  {filter}
-                </button>
-              ))}
-            </Reveal>
-          </div>
-        </section>
+            <div className="mt-12 space-y-14 md:space-y-20">
+              {portfolioDivisions.map((division, divisionIndex) => {
+                const previewItems = getPreviewItems(division);
+                const moreImage = division.gallery[4]?.image || previewItems[0]?.image;
+                const hiddenImageCount = Math.max(division.gallery.length - previewItems.length, 0);
 
-        <section id="gallery" className="pb-16 md:pb-24">
-          <div className="section-shell">
-            <Reveal className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <span className="eyebrow">Masonry Gallery</span>
-                <h2 className="section-title mt-6">Images first. Details on click.</h2>
-              </div>
-              <p className="max-w-sm text-sm leading-7 text-white/58">
-                Tap any project to open a fullscreen view with project context and a quick action.
-              </p>
-            </Reveal>
+                return (
+                  <Reveal key={division.filter} delay={divisionIndex * 0.06}>
+                    <article className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.025] p-4 md:p-6">
+                      <div className="mb-6 flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
+                        <div className="max-w-3xl">
+                          <div className="flex flex-wrap items-center gap-3">
+                            <span className="rounded-full border border-[#e9c99d]/24 bg-[#e9c99d]/10 px-3 py-2 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#f0d3a9]">
+                              {division.gallery.length} images
+                            </span>
+                            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/44">
+                              {division.folder}
+                            </span>
+                          </div>
+                          <h3 className="mt-5 text-4xl font-semibold leading-none text-white md:text-5xl">
+                            {division.title}
+                          </h3>
+                          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/68">
+                            {division.description}
+                          </p>
+                        </div>
 
-            <div className="columns-1 gap-4 sm:columns-2 xl:columns-3">
-              {filteredProjects.map((project, index) => (
-                <motion.button
-                  key={project.id}
-                  aria-label={`Open ${project.title}`}
-                  className="interactive-surface mb-4 block w-full break-inside-avoid overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.025] text-left"
-                  initial={{ opacity: 0, y: 28 }}
-                  onClick={() => setActiveProject(project)}
-                  type="button"
-                  viewport={{ once: true, margin: "-80px" }}
-                  whileHover={{ y: -4 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                >
-                  <div
-                    className={`${projectHeight(project.size, index)} bg-cover bg-center transition duration-700 hover:scale-[1.04]`}
-                    style={{ backgroundImage: `url(${project.image})` }}
-                  />
-                  <div className="flex items-center justify-between gap-4 p-4">
-                    <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/46">
-                      {project.category}
-                    </span>
-                    <Maximize2 className="h-4 w-4 text-[#e9c99d]" />
-                  </div>
-                </motion.button>
-              ))}
+                        <div className="flex flex-wrap gap-2">
+                          {division.highlights.map((highlight) => (
+                            <span
+                              key={highlight}
+                              className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/64"
+                            >
+                              {highlight}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="grid grid-flow-dense auto-rows-[180px] grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                        {previewItems.map((item, imageIndex) => (
+                          <motion.button
+                            key={item.id}
+                            aria-label={"Open " + item.title}
+                            className={[
+                              "interactive-surface group relative overflow-hidden rounded-[1.15rem] border border-white/10 bg-white/[0.03] text-left",
+                              imageIndex === 0 ? "sm:row-span-2 xl:col-span-2" : ""
+                            ].join(" ")}
+                            initial={{ opacity: 0, y: 24 }}
+                            onClick={() => setActiveProject(item)}
+                            type="button"
+                            viewport={{ once: true, margin: "-80px" }}
+                            whileHover={{ y: -4 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                          >
+                            <span
+                              className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.06]"
+                              style={{ backgroundImage: backgroundImageUrl(item.image) }}
+                            />
+                            <span className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/10 to-transparent opacity-80 transition group-hover:opacity-95" />
+                          </motion.button>
+                        ))}
+
+                        <motion.button
+                          aria-label={"Open more " + division.title + " images"}
+                          className="interactive-surface group relative overflow-hidden rounded-[1.15rem] border border-[#e9c99d]/24 bg-[#e9c99d]/10 text-left"
+                          initial={{ opacity: 0, y: 24 }}
+                          onClick={() => setActiveDivision(division)}
+                          type="button"
+                          viewport={{ once: true, margin: "-80px" }}
+                          whileHover={{ y: -4 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                        >
+                          {moreImage ? (
+                            <span
+                              className="absolute inset-0 bg-cover bg-center opacity-55 blur-[1px] transition duration-700 group-hover:scale-[1.06] group-hover:opacity-70"
+                              style={{ backgroundImage: backgroundImageUrl(moreImage) }}
+                            />
+                          ) : null}
+                          <span className="absolute inset-0 bg-black/62" />
+                          <span className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-5 text-center">
+                            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e9c99d]/28 bg-black/28 text-[#f0d3a9] backdrop-blur">
+                              <Images className="h-5 w-5" />
+                            </span>
+                            <span className="text-2xl font-semibold text-white">More</span>
+                            <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/62">
+                              {hiddenImageCount > 0 ? "+" + hiddenImageCount + " images" : "Open gallery"}
+                            </span>
+                          </span>
+                        </motion.button>
+                      </div>
+                    </article>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -253,8 +287,8 @@ export default function PortfolioPage() {
           <div className="section-shell">
             <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
-                <span className="eyebrow">Project Detail Sections</span>
-                <h2 className="section-title mt-6">Four ways Harkani.Plc delivers.</h2>
+                <span className="eyebrow">Division Detail Sections</span>
+                <h2 className="section-title mt-6">Three divisions Harkani.Plc delivers.</h2>
               </div>
               <Link className="secondary-button inline-flex w-fit items-center gap-2" href="/">
                 Homepage
@@ -271,12 +305,12 @@ export default function PortfolioPage() {
                     <article className="interactive-surface grid min-h-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] md:grid-cols-[0.95fr_1.05fr]">
                       <div
                         className="min-h-[320px] bg-cover bg-center"
-                        style={{ backgroundImage: `url(${project.image})` }}
+                        style={{ backgroundImage: backgroundImageUrl(project.image) }}
                       />
                       <div className="flex flex-col justify-between p-6">
                         <div>
                           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#e9c99d]">
-                            {project.category}
+                            {project.division}
                           </p>
                           <h3 className="mt-4 text-3xl font-semibold text-white">{story.title}</h3>
                           <p className="mt-4 text-sm leading-7 text-white/66">{story.description}</p>
@@ -310,7 +344,7 @@ export default function PortfolioPage() {
             <Reveal className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0c0a08] p-6 md:p-12">
               <div
                 className="absolute inset-0 opacity-28"
-                style={{ backgroundImage: `url(${trustVisuals[2]})`, backgroundPosition: "center", backgroundSize: "cover" }}
+                style={{ backgroundImage: backgroundImageUrl(trustVisuals[2]), backgroundPosition: "center", backgroundSize: "cover" }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black via-black/82 to-black/25" />
               <div className="relative z-10 max-w-3xl">
@@ -335,6 +369,7 @@ export default function PortfolioPage() {
                     Email the Team
                   </a>
                 </div>
+                <SocialLinks className="mt-7" />
               </div>
             </Reveal>
           </div>
@@ -342,6 +377,94 @@ export default function PortfolioPage() {
       </main>
 
       <AnimatePresence>
+        {activeDivision ? (
+          <motion.div
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-[80] overflow-y-auto bg-black/92 p-3 backdrop-blur-xl md:p-6"
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+          >
+            <button
+              aria-label="Close division gallery"
+              className="fixed right-4 top-4 z-[90] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur-xl"
+              onClick={() => setActiveDivision(null)}
+              type="button"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <motion.article
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              className="mx-auto min-h-[calc(100vh-1.5rem)] w-full max-w-[1380px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#080706] p-4 md:p-7"
+              exit={{ opacity: 0, y: 24, scale: 0.98 }}
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <header className="flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="rounded-full border border-[#e9c99d]/24 bg-[#e9c99d]/10 px-3 py-2 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#f0d3a9]">
+                      {activeDivision.gallery.length} images
+                    </span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/44">
+                      Full gallery
+                    </span>
+                  </div>
+                  <h2 className="mt-5 text-4xl font-semibold leading-none text-white md:text-6xl">
+                    {activeDivision.title}
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-white/68">
+                    {activeDivision.description}
+                  </p>
+                </div>
+
+                <a
+                  className="luxury-button inline-flex w-fit items-center gap-2"
+                  href={whatsappHref}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Start Similar Project
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </header>
+
+              <div className="mt-6 grid grid-flow-dense auto-rows-[190px] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {activeDivision.gallery.map((item, imageIndex) => (
+                  <motion.button
+                    key={item.id}
+                    aria-label={"Open " + item.title}
+                    className={[
+                      "interactive-surface group relative overflow-hidden rounded-[1.15rem] border border-white/10 bg-white/[0.03] text-left",
+                      imageIndex === 0 ? "sm:row-span-2 lg:col-span-2" : ""
+                    ].join(" ")}
+                    initial={{ opacity: 0, y: 18 }}
+                    onClick={() => {
+                      setActiveDivision(null);
+                      setActiveProject(item);
+                    }}
+                    type="button"
+                    whileHover={{ y: -4 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                  >
+                    <span
+                      className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.06]"
+                      style={{ backgroundImage: backgroundImageUrl(item.image) }}
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/8 to-transparent opacity-78 transition group-hover:opacity-92" />
+                    <span className="absolute bottom-4 left-4 right-4">
+                      <span className="block text-sm font-semibold text-white">{item.title}</span>
+                      <span className="mt-1 block text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/46">
+                        Open image
+                      </span>
+                    </span>
+                  </motion.button>
+                ))}
+              </div>
+            </motion.article>
+          </motion.div>
+        ) : null}
+
         {activeProject ? (
           <motion.div
             animate={{ opacity: 1 }}
@@ -367,12 +490,12 @@ export default function PortfolioPage() {
             >
               <div
                 className="min-h-[58vh] bg-cover bg-center lg:min-h-[calc(100vh-3rem)]"
-                style={{ backgroundImage: `url(${activeProject.image})` }}
+                style={{ backgroundImage: backgroundImageUrl(activeProject.image) }}
               />
               <aside className="flex flex-col justify-between p-6 md:p-8">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#e9c99d]">
-                    {activeProject.category}
+                    {activeProject.division}
                   </p>
                   <h2 className="mt-5 text-4xl font-semibold leading-none text-white md:text-5xl">
                     {activeProject.title}
@@ -406,6 +529,8 @@ export default function PortfolioPage() {
           </motion.div>
         ) : null}
       </AnimatePresence>
+
+      <WhatsAppWidget />
     </div>
   );
 }

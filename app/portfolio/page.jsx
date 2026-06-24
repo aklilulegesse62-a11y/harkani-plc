@@ -3,7 +3,7 @@ import PortfolioPage from "@/components/portfolio-page";
 export const metadata = {
   title: "Portfolio | Harkani.Plc",
   description:
-    "Explore Harkani.Plc portfolio work across interiors, furniture, finishing construction, commercial spaces, hospitality, and full setup projects."
+    "Explore Harkani.Plc portfolio work by Interior Design Division, Furniture Division, and Finishing & Construction Division."
 };
 
 export default function Page() {

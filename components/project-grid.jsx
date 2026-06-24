@@ -18,7 +18,7 @@ export default function ProjectGrid() {
       return projects;
     }
 
-    return projects.filter((project) => project.category === selectedFilter);
+    return projects.filter((project) => project.division === selectedFilter);
   }, [selectedFilter]);
 
   return (
